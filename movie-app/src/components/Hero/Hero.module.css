@@ -7,10 +7,11 @@
     display: flex;
     flex-direction: column;
     text-align: center;
+    padding: 2rem 1rem; /* Tambahan padding */
   }
   
   .hero__left {
-    margin-bottom: 1rem;
+    margin-bottom: 2rem; /* Lebih longgar */
   }
   
   .hero__title {
@@ -27,7 +28,8 @@
   
   .hero__description {
     color: #64748b;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
   }
   
   .hero__button {
@@ -36,20 +38,26 @@
     border-radius: 10px;
     background-color: #4361ee;
     color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .hero__button:hover {
+    background-color: #274cdb;
   }
   
   .hero__image {
-    max-width: 100%;
-    height: auto;
-    border-radius: 25px;
+    width: 350px;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 25px; /* kalau tetap mau ada sudut membulat */
+    margin: 0 auto;
   }
   
   /* Medium Screen */
   @media (min-width: 768px) {
-    /*
-     * Nothing TODO Here.
-     * We dont change style Hero. 
-     */
+    /* Masih cukup dengan mobile style */
   }
   
   /* Large Screen */
@@ -60,18 +68,26 @@
     }
   
     .hero {
-      margin: 0 1rem;
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
       text-align: left;
+      gap: 2rem; /* Tambahan jarak antar kolom */
+      padding: 3rem 2rem;
     }
   
     .hero__left {
-      flex-basis: 40%;
+      flex-basis: 50%;
+      margin-bottom: 0; /* Hilangkan margin bawah di desktop */
     }
   
     .hero__right {
-      flex-basis: 60%;
+      flex-basis: 50%;
+      display: flex;
+      justify-content: center; /* Supaya gambar tetap di tengah */
+    }
+  
+    .hero__image {
+      margin: 0; /* Hilangkan margin center di desktop */
     }
   }

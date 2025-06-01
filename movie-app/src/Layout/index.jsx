@@ -1,6 +1,6 @@
-import Navbar from "../component/Navbar/Navbar";
-import Footer from "../component/Footer/Footer";
-import Container from "../component/container/Index";
+import Navbar from "../components/Navbar/Navbar";
+import Footer from "../components/Footer/Footer";
+import Container from "../components/container/Index";
 function Layout({children}){
     return (
         <>
