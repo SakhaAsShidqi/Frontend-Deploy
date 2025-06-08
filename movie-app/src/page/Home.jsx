@@ -12,8 +12,7 @@ function Home() {
     <main>
       <Hero />
       <div style={{ display: "flex", gap: "1rem", margin: "1rem 0" }}>
-        <Button variant="primary">Lihat</Button>
-        <Button variant="secondary" style={{ flex: 1 }}>Lihat</Button>
+        <Button variant="primary" style={{ flex: 1 }}>Lihat</Button>
       </div>
       <Movies movies={movies} setMovies={setMovies} />
       <AddMovie movies={movies} setMovies={setMovies} />
