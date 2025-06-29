@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import styled from "styled-components";
 import { nanoid } from "nanoid";
+import MoviesContext from "../../Context/MoviesContext";
 
 const Container = styled.div`
   border-radius: 8px;
@@ -57,7 +58,8 @@ const Button = styled.button`
   }
 `;
 
-function AddMovie({ movies, setMovies }) {
+function AddMovie() {
+  const { movies, setMovies } = useContext(MoviesContext);
   const [formData, setFormData] = useState({
     title: "",
     year: "",

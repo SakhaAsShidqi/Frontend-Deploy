@@ -1,35 +1,26 @@
-import React, { useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import axios from "axios";
-import MovieList from "../components/MovieList";
+import Hero from "../components/Hero/Hero";
+import Movies from "../components/Movies/Movies";
+import ENDPOINTS from "../utils/constants/endpoints";
+import MoviesContext from "../Context/MoviesContext";
 
 function TopRated() {
-  const API_KEY = import.meta.env.VITE_API_KEY;
-  const URL = `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`;
-  const [movies, setMovies] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const { movies, setMovies } = useContext(MoviesContext);
 
   useEffect(() => {
-    async function getTopRatedMovies() {
-      try {
-        const response = await axios.get(URL);
-        setMovies(response.data.results || []);
-      } catch (error) {
-        setMovies([]);
-      } finally {
-        setLoading(false);
-      }
+    async function fetchTopRatedMovies() {
+      const response = await axios(ENDPOINTS.TOP_RATED);
+      setMovies(response.data.results);
     }
-    getTopRatedMovies();
-  }, [URL]);
-
-  if (loading) return <div>Loading...</div>;
+    fetchTopRatedMovies();
+  }, [setMovies]);
 
   return (
-    <div>
-      <h2 className="text-2xl font-bold mb-4">Top Rated Movies</h2>
-      <MovieList movies={movies} />
-    </div>
+    <>
+      <Hero movie={movies[0]} />
+      <Movies title="Top Rated Movies" />
+    </>
   );
 }
-
 export default TopRated;

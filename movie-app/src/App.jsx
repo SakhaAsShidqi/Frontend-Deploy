@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "./page/Home";
-import Creates from "./page/creates"; 
+import Creates from "./page/Create"; 
 import Popular from "./page/Popular";
 import NowPlaying from "./page/NowPlaying";
 import TopRated from "./page/TopRated";

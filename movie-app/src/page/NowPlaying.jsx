@@ -1,35 +1,33 @@
-import React, { useEffect, useState } from "react";
+// import Navbar from "../components/Navbar/Navbar";
+// import Footer from "../components/Footer/Footer";
+import { useContext, useEffect} from "react";
 import axios from "axios";
-import MovieList from "../components/MovieList";
+import Hero from "../components/Hero/Hero";
+import Movies from "../components/Movies/Movies";
+import ENDPOINTS from "../utils/constants/endpoints";
+import MoviesContext from "../Context/MoviesContext";
 
 function NowPlaying() {
-  const API_KEY = import.meta.env.VITE_API_KEY;
-  const URL = `https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&language=en-US&page=1`;
-  const [movies, setMovies] = useState([]);
-  const [loading, setLoading] = useState(true);
+    // const [movies, setMovies] = useState([]);
+    const {setMovies} = useContext(MoviesContext);
 
-  useEffect(() => {
-    async function getNowPlayingMovies() {
-      try {
-        const response = await axios.get(URL);
-        setMovies(response.data.results || []);
-      } catch (error) {
-        setMovies([]);
-      } finally {
-        setLoading(false);
-      }
-    }
-    getNowPlayingMovies();
-  }, [URL]);
+    useEffect(() => {
+        async function fetchNowPlayingMovies() {
+            // const API_KEY = import.meta.env.VITE_API_KEY;
+            // const URL = https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY};
+            // const response = await axios.get(URL);
+            const response = await axios (ENDPOINTS.NOWPLAYING);
+            setMovies(response.data.results);
+        }
+        fetchNowPlayingMovies();
+    }, [setMovies]);
 
-  if (loading) return <div>Loading...</div>;
-
-  return (
-    <div>
-      <h2 className="text-2xl font-bold mb-4">Now Playing Movies</h2>
-      <MovieList movies={movies} />
-    </div>
-  );
+    return (
+        <>
+        <Hero />
+        <Movies title="Now Playing Movies" />
+        </>
+    );
 }
 
 export default NowPlaying;

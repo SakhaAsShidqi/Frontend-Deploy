@@ -79,7 +79,7 @@ const Right = styled.div`
 
 const Poster = styled.img`
   width: 350px;
-  height: 350px;
+  height: 350px;  
   object-fit: cover;
   border-radius: 25px;
   margin: 0 auto;
