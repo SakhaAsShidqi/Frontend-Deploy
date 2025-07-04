@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import Movie from "../Movie/Movie";
+import Movie from "../movie/Movie";
 import styles from "./Movies.module.css";
 import MoviesContext from "../../Context/MoviesContext";
 
